@@ -28,32 +28,69 @@ row = Words_List[number_false2]
 false2_German_word = row[0]
 false2_English_word = row[1]
 
-# The German word is ... what is the English word?
-print ("The German word is", correct_German_word)
+#Create a random float between 0 and 1
+rand_float= random.uniform(0,1)
 
-#attempt=input("What is the English Word? ")
+if rand_float>0.5:
 
-#Need to create a random placement of the correct answer in index 0, 1 or 2
+    # The German word is ... what is the English word?
+    print ("The German word is", correct_German_word)
 
-placement_index=[0, 1, 2]
-random.shuffle(placement_index)
-answer_order=[]
-for ii in range (len(placement_index)):
-    if (placement_index[ii]==0):
-        answer_order.append(correct_English_word)
-    elif (placement_index[ii]==1):
-        answer_order.append(false1_English_word)
-    elif (placement_index[ii]==2):
-        answer_order.append(false2_English_word)    
-        
-print (answer_order)
+    # Need to create a random placement of the correct answer
 
-'''
+    placement_index=[0, 1, 2]
+    random.shuffle(placement_index)
+    answer_order=[]
+    for ii in range (len(placement_index)):
+        if (placement_index[ii]==0):
+            answer_order.append(correct_English_word)
+        elif (placement_index[ii]==1):
+            answer_order.append(false1_English_word)
+        elif (placement_index[ii]==2):
+            answer_order.append(false2_English_word)    
+            
+    print ("Is the translation: \n 1.) ",answer_order[0]," \n 2.) ",answer_order[1],"  \n 3.) ",answer_order[2]," ?")
 
-if attempt==English_word:
-    print ("Great Success!")
+    selected_answer=int(input("Select Answer 1, 2 or 3: "))
+
+    #need to check if 0 index matched the correct_German_word
+    selected_index=selected_answer-1
+
+    if answer_order[selected_index] == correct_English_word:
+        print("Congratulations! You are correct!")
+    else:
+        print("Not Quite!")
+        print ("The correct translation of the German \"",correct_German_word,"\" was the English word \"",correct_English_word,"\". ")
+
 else:
-    print ("That was not quite right")
-    print ("The answer was ",English_word)
+    
+    # The English word is ... what is the German word?
+    print ("The English word is", correct_English_word)
 
-'''
+    # Need to create a random placement of the correct answer
+
+    placement_index=[0, 1, 2]
+    random.shuffle(placement_index)
+    answer_order=[]
+    for ii in range (len(placement_index)):
+        if (placement_index[ii]==0):
+            answer_order.append(correct_German_word)
+        elif (placement_index[ii]==1):
+            answer_order.append(false1_German_word)
+        elif (placement_index[ii]==2):
+            answer_order.append(false2_German_word)    
+            
+    print ("Is the translation: \n 1.) ",answer_order[0]," \n 2.) ",answer_order[1],"  \n 3.) ",answer_order[2]," ?")
+
+    selected_answer=int(input("Select Answer 1, 2 or 3: "))
+
+    #need to check if 0 index matched the correct_German_word
+    selected_index=selected_answer-1
+
+    if answer_order[selected_index] == correct_German_word:
+        print("Congratulations! You are correct!")
+    else:
+        print("Not Quite!")
+        print ("The correct translation of the English \"",correct_English_word,"\" was the German word \"",correct_German_word,"\". ")
+
+
